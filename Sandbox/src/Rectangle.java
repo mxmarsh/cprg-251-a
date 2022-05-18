@@ -1,4 +1,5 @@
 /**
+ * This class represents a Rectangle object.
  * 
  * @author Dana Marsh (dana.marsh@sait.ca)
  * @author Musqunamu'k (moral support)
@@ -12,11 +13,14 @@ public class Rectangle {
 	 * This represents the width of the Rectangle.
 	 */
 	private double width;
+	/**
+	 * This represents the height of the Rectangle.
+	 */
 	private double height;
 
 	// constructor methods:
 	/**
-	 * No-arg constructor.
+	 * Initializes the newly created Rectangle
 	 */
 	public Rectangle() {
 		System.out.println("Creating a rectangle...");
@@ -25,10 +29,8 @@ public class Rectangle {
 	/**
 	 * This constructor creates a Rectangle of a specified width and height.
 	 * 
-	 * @param w
-	 *            The width of the Rectangle object
-	 * @param h
-	 *            The height of the Rectangle object
+	 * @param w The width of the Rectangle object
+	 * @param h The height of the Rectangle object
 	 */
 	public Rectangle(double w, double h) {
 		this.width = w; // this. is optional here
@@ -36,10 +38,20 @@ public class Rectangle {
 	}
 
 	// get/set methods:
+	/**
+	 * Sets the Rectangle's width.
+	 * 
+	 * @param w Width of Rectangle
+	 */
 	public void setWidth(double w) {
 		width = w;
 	}
 
+	/**
+	 * Sets the Rectangle's height.
+	 * 
+	 * @param h Height of Rectangle
+	 */
 	public void setHeight(double h) {
 		height = h;
 	}
@@ -53,14 +65,29 @@ public class Rectangle {
 		return width;
 	}
 
+	/**
+	 * This method returns the height of the Rectangle.
+	 * 
+	 * @return The height of the Rectangle.
+	 */
 	public double getHeight() {
 		return height;
 	}
 
+	/**
+	 * This method returns the perimeter of the Rectangle.
+	 * 
+	 * @return Perimeter of the Rectangle
+	 */
 	public double getParimeter() {
 		return 2 * (width + height);
 	}
 
+	/**
+	 * This method returns the area of the Rectangle.
+	 * 
+	 * @return Area of rectangle.
+	 */
 	public double getArea() {
 		return width * height;
 	}
