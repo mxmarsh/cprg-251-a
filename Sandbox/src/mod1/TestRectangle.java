@@ -1,4 +1,8 @@
+package mod1;
+
 import java.util.Scanner;
+
+import mod1.Rectangle;
 
 public class TestRectangle {
 

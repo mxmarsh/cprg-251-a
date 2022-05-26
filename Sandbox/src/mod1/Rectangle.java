@@ -1,3 +1,5 @@
+package mod1;
+
 /**
  * This class represents a Rectangle object.
  * 
