@@ -74,7 +74,16 @@ public class Person {
 	// any other methods:
 	@Override
 	public String toString() {
-		return String.format("%s: $%f", name, cardBalance); // Name: $1.23
+		// using string formatting:
+		// return String.format("%s: $%.2f", name, cardBalance); // Name: $1.23
+
+		// getting fancy with currency formatting:
+		// NumberFormat nf = NumberFormat.getCurrencyInstance(Locale.CANADA);
+		// return this.name + ": " + nf.format(cardBalance);
+
+		// keeping things simpler:
+		return name + ": $" + cardBalance;
+
 	}
 
 }
