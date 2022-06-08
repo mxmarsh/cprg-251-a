@@ -7,7 +7,7 @@ package mod4GUIpractice;
  *
  */
 
-public class AppDriver {
+public class GUIAppDriver {
 
 	public static void main(String[] args) {
 		OurWindow frame = new OurWindow();
