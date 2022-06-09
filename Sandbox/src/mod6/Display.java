@@ -1,4 +1,4 @@
-package mod6.application;
+package mod6;
 
 import mod6.contracts.Displayable;
 

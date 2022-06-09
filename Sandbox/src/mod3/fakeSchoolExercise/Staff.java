@@ -1,4 +1,4 @@
-package mod3FakeSchoolExercise;
+package mod3.fakeSchoolExercise;
 
 public class Staff extends Employee {
 

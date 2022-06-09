@@ -1,4 +1,4 @@
-package mod3FakeSchoolExercise;
+package mod3.fakeSchoolExercise;
 
 /**
  * Class description: to test our Employee hierarchy

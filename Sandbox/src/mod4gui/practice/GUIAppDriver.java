@@ -1,4 +1,4 @@
-package mod4GUIpractice;
+package mod4gui.practice;
 
 /**
  * Class description: create a starting point to test OurWindow
