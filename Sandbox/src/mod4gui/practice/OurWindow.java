@@ -1,6 +1,6 @@
 package mod4gui.practice;
 
-import java.awt.BorderLayout;
+import java.awt.*;
 import java.awt.event.*;
 
 import javax.swing.*;
@@ -27,7 +27,7 @@ public class OurWindow extends JFrame {
 		super("Home");
 
 		// set the size of the window
-		setSize(300, 100); // setting the width and height of our new window
+		setSize(400, 100); // setting the width and height of our new window
 
 		// set the process to terminate when the window is closed:
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -47,6 +47,13 @@ public class OurWindow extends JFrame {
 
 		// add stuff to it
 		JLabel label = new JLabel("Which window would you like to see?");
+
+		// create a font object:
+		Font titleFont = new Font("Verdana", Font.PLAIN, 18);
+
+		// apply that font to my GUI component:
+		label.setFont(titleFont);
+
 		panel.add(label);
 
 		return panel;

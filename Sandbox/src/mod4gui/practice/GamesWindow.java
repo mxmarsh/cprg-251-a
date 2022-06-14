@@ -29,6 +29,31 @@ public class GamesWindow extends JFrame {
 		comboBox.setEditable(true); // makes it possible to type in another option
 		panel.add(comboBox);
 
+		/* NEW STUFF STARTS HERE */
+
+		// create a list model that contains all the games
+		DefaultListModel<String> listModel = new DefaultListModel<String>();
+		listModel.addElement("Settlers of Catan");
+		listModel.addElement("Monopoly");
+		listModel.addElement("Risk");
+		listModel.addElement("Ticket to Ride");
+		listModel.addElement("Life");
+		listModel.addElement("Monopoly");
+		listModel.addElement("Risk");
+		listModel.addElement("Ticket to Ride");
+		listModel.addElement("Life");
+
+		// use that list model to create a JList
+		JList listOfGames = new JList(listModel);
+
+		// add a scrollbar to that list
+		JScrollPane scrolly = new JScrollPane(listOfGames);
+
+		// add the whole thing to our panel
+		panel.add(scrolly);
+
+		/* NEW STUFF OVER */
+
 		return panel;
 
 	}
