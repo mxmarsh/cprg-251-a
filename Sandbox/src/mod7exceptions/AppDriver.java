@@ -1,5 +1,7 @@
 package mod7exceptions;
 
+import java.util.Scanner;
+
 /**
  * 
  * Class description: a very silly little class to play around with Exceptions
@@ -11,11 +13,9 @@ public class AppDriver {
 
 	public static void main(String[] args) {
 
-		int age;
-
 		try {
 			// code before
-			age = setAge(-5);
+			rethrow();
 			// code after
 		} catch (NumberFormatException e) {
 			// fix it somehow
@@ -24,21 +24,32 @@ public class AppDriver {
 			e.printStackTrace(); // print out the steps that occurred before the exception was thrown
 			System.out.println(e); // print out the name & message
 			// prompt them again for a valid input..
-			age = 0;
 		} finally {
 			// this code runs NO MATTER WHAT
 		}
 	}
 
 	public static void rethrow() throws Exception {
-		try {
-			setAge(-2);
-		} catch (NumberFormatException e) {
-			// can fix this
-		} catch (Exception e) {
-			// can't fix this, gonna re-throw it
-			throw e;
-		}
+
+		Scanner keyboard = new Scanner(System.in);
+		boolean canExitLoop = false;
+
+		do {
+			System.out.println("Please enter the age:");
+			int x = keyboard.nextInt();
+
+			try {
+				setAge(x);
+				canExitLoop = true;
+			} catch (NumberFormatException e) {
+				// can fix this
+			} catch (Exception e) {
+				System.out.println("Invalid input, please try again");
+				throw e;
+			} finally {
+				keyboard.close();
+			}
+		} while (!canExitLoop);
 	}
 
 	/**
