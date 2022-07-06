@@ -16,14 +16,14 @@ public class OurCalculator implements SimpleCalculator {
 
 	@Override
 	public double multiply(double num1, double num2) {
-		// TODO Auto-generated method stub
-		return 0;
+		return num1 * num2;
 	}
 
 	@Override
 	public double divide(double num1, double num2) throws ArithmeticException {
-		// TODO Auto-generated method stub
-		return 0;
+		if (num2 == 0)
+			throw new ArithmeticException("cannot divide by zero");
+		return num1 / num2;
 	}
 
 }

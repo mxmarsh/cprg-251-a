@@ -46,4 +46,20 @@ public interface SimpleCalculator {
 	 */
 	public double divide(double num1, double num2) throws ArithmeticException;
 
+	/**
+	 * Method to calculate the square of a number
+	 * 
+	 * @param num1 the value provided
+	 * @return the square of num1 (i.e. num1 * num1)
+	 */
+	public double square(double num1);
+
+	/**
+	 * Method to calculate the square root of a number
+	 * 
+	 * @param num1 the value provided
+	 * @return the square root of num1 (i.e. num1 ^ .5)
+	 * @throws NegativeSquareRootException if num1 is negative
+	 */
+	public double squareRoot(double num1) throws NegativeSquareRootException;
 }

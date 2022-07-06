@@ -1,6 +1,6 @@
 package tests;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.*;
 
@@ -51,9 +51,36 @@ class OurCalculatorTests {
 		assertEquals(actual, expected, .001);
 	}
 
-	// come up with at least one test for each of the remaining methods
-	// then, write the missing code
-	// re-run the test
-	// don't worry about testing exception
+	@Test
+	public void testMultiply() {
+		double actual = calc.multiply(value1, value2);
+		double expected = 7.41;
+		assertEquals(actual, expected, .001);
+	}
+
+	@Test
+	public void testDivide() {
+		double actual = calc.divide(value1, value2);
+		double expected = 0.228;
+		assertEquals(actual, expected, .001);
+	}
+
+	@Test
+	public void sillyTest() {
+		assertThrows(Exception.class, () -> {
+			Integer.parseInt("abc");
+		});
+	}
+
+	@Test
+	public void testDivideByZero() {
+		assertThrows(ArithmeticException.class, () -> {
+			calc.divide(value1, 0);
+		});
+	}
+
+	// create the missing exception class
+	// add the 2 missing methods to OurCalculator
+	// add at least one test per method
 
 }
