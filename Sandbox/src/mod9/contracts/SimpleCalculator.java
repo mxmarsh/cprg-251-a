@@ -1,5 +1,7 @@
 package mod9.contracts;
 
+import mod9.exceptions.NegativeSquareRootException;
+
 /**
  * 
  * Class description: a program that does simple arithmetic operations
@@ -62,4 +64,5 @@ public interface SimpleCalculator {
 	 * @throws NegativeSquareRootException if num1 is negative
 	 */
 	public double squareRoot(double num1) throws NegativeSquareRootException;
+
 }

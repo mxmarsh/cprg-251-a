@@ -5,6 +5,7 @@ import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.*;
 
 import mod9.calculator.OurCalculator;
+import mod9.exceptions.NegativeSquareRootException;
 
 class OurCalculatorTests {
 
@@ -79,8 +80,43 @@ class OurCalculatorTests {
 		});
 	}
 
-	// create the missing exception class
-	// add the 2 missing methods to OurCalculator
-	// add at least one test per method
+	@Test
+	public void testSquare() {
+		double actual = calc.square(value1);
+		double expected = 1.69;
+		assertEquals(actual, expected, 0.001);
+	}
+
+	@Test
+	public void testSquareRootPositive() {
+		double actual;
+		try {
+			actual = calc.squareRoot(value1);
+			double expected = 1.14;
+			assertEquals(actual, expected, .001);
+		} catch (NegativeSquareRootException e) {
+			// this is a failure
+			fail("This operation should not throw an exception.");
+		}
+	}
+
+	@Test
+	public void testSquareRootNegative() {
+		try {
+			calc.squareRoot(-value1);
+			// if the previous line doesn't throw an exception, we continue here
+			fail("Should have thrown an exception.");
+		} catch (NegativeSquareRootException e) {
+			// this is what I expect to happen
+			assertTrue(true);
+		}
+	}
+
+	@Test
+	public void testSquareRootNegativeV2() {
+		assertThrows(NegativeSquareRootException.class, () -> {
+			calc.squareRoot(-value1);
+		});
+	}
 
 }
