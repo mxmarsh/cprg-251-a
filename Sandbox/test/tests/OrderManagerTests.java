@@ -4,7 +4,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.*;
 
-import mod9.exceptions.InvalidPriceException;
+import mod9.exceptions.*;
 import mod9.shopping.*;
 
 class OrderManagerTests {
@@ -34,8 +34,9 @@ class OrderManagerTests {
 			assertEquals(expected, actual);
 		} catch (InvalidPriceException ex) {
 			fail("InvalidPriceException should not have been thrown.");
+		} catch (InvalidQuantityException ex) {
+			fail("InvalidQuantityException should not have been thrown.");
 		}
-
 	}
 
 	@Test
@@ -50,23 +51,103 @@ class OrderManagerTests {
 
 	@Test
 	public void testAddInvalidQuantity() {
-
-		// expect to see InvalidQuantityException
-
+		assertThrows(InvalidQuantityException.class, () -> {
+			// create product with decimals
+			Product p = new Product("Apples", -2, 0.50);
+			// add product to the order
+			order.add(p);
+		});
 	}
 
-	// check if the order is empty
+	@Test
+	public void testIsEmpty() {
+		// create an empty order
+		// confirm that isEmpty() returns true
+		assertTrue(order.isEmpty());
+	}
 
-	// get the size of the order
+	@Test
+	public void testIsNotEmpty() {
+		try {
+			// create an order with products in it
+			order.add(new Product("apples", 17, .50));
+			// confirm that isEmpty() returns false
+			assertFalse(order.isEmpty());
+		} catch (Exception ex) {
+			fail("Should not have thrown an exception.");
+		}
+	}
 
-	// test:
-	// calculate subtotal
-	// 2 apples @ 50 cents each
-	// 3 bananas @ $1
-	// subtotal = $4
+	@Test
+	public void testGetNumberOfProducts() {
+		// empty order
+		assertEquals(0, order.getNumberOfProducts());
+	}
 
-	// calculate total: subtotal + 5% GST
+	@Test
+	public void testCalculateSubtotal() {
+		try {
+			// 2 apples @ 50 cents each
+			order.add(new Product("apples", 2, .50));
+			// 3 bananas @ $1
+			order.add(new Product("bananas", 3, 1.00));
+			// subtotal = $4
+			assertEquals(4, order.calculateSubtotal(), .01);
+		} catch (Exception ex) {
+			fail("Should not have thrown an exception.");
+		}
+	}
 
-	// check if a certain product is in the order
+	@Test
+	public void testCalculateTotal() {
+		try {
+			// 2 apples @ 50 cents each
+			order.add(new Product("apples", 2, .50));
+			// 3 bananas @ $1
+			order.add(new Product("bananas", 3, 1.00));
+			// subtotal = $4
+			// tax = .20
+			// total = $4.20
+			assertEquals(4.20, order.calculateTotal(), .01);
+		} catch (Exception ex) {
+			fail("Should not have thrown an exception.");
+		}
+	}
+
+	@Test
+	public void testContains() {
+		try {
+			order.add(new Product("apples", 2, .50));
+			order.add(new Product("bananas", 3, 1.00));
+			assertTrue(order.contains(new Product("apples", 5, .75)));
+		} catch (Exception ex) {
+			fail("Should not have thrown an exception.");
+		}
+	}
+
+	@Test
+	public void testNotContains() {
+		try {
+			order.add(new Product("apples", 2, .50));
+			order.add(new Product("bananas", 3, 1.00));
+			assertFalse(order.contains(new Product("pears", 5, .75)));
+		} catch (Exception ex) {
+			fail("Should not have thrown an exception.");
+		}
+	}
+
+	@Test
+	public void testContainsNull() {
+		try {
+			order.add(new Product("apples", 2, .50));
+			order.add(new Product("bananas", 3, 1.00));
+			order.contains(null);
+			fail("Should have thrown an exception.");
+		} catch (NullPointerException ex) {
+			assertTrue(true);
+		} catch (Exception ex) {
+			fail("Should have thrown an NPE.");
+		}
+	}
 
 }
