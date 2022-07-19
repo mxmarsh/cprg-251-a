@@ -24,7 +24,6 @@ public class SerializationDriver {
 
 		} catch (Exception e) {
 			System.out.println("Sorry, something went wrong.");
-			e.printStackTrace();
 		}
 
 	}
